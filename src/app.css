@@ -1,0 +1,54 @@
+@import '@fontsource/fira-mono';
+
+:root {
+	font-family: 'fira-mono', sans-serif;
+	--primary-color: rgb(15 23 42);
+	--secondary-color: rgb(27 58 92);
+	--accent-color: rgb(226, 232, 240);
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background: linear-gradient(
+		180deg,
+		var(--primary-color) 7%,
+		var(--secondary-color) 23.45%,
+		var(--primary-color) 67.35%
+	);
+}
+
+#svelte {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+h1:hover,
+a:hover {
+	color: rgb(255, 255, 255);
+}
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+	outline: 2px solid rgb(14, 165, 235);
+	outline-offset: 1px;
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
