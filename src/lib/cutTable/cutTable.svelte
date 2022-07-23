@@ -1,14 +1,20 @@
 <script>
-	export let userCuttedURLs;
+	import { cuttedURLs } from '$lib/store';
+
+	let cuttedURLsValue;
+
+	cuttedURLs.subscribe((value) => {
+		cuttedURLsValue = value;
+	});
 </script>
 
 <section class="cut-container">
-	{#if userCuttedURLs.length < 1}
+	{#if cuttedURLsValue.length < 1}
 		<div class="cut-empty">
 			<h3 class="cut-empty__text">Here will be your shortened links</h3>
 		</div>
 	{/if}
-	{#each userCuttedURLs as cuttedURL}
+	{#each cuttedURLsValue as cuttedURL}
 		<div class="cut">
 			<h4 class="cut__url">{cuttedURL}</h4>
 		</div>

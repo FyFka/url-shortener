@@ -1,27 +1,21 @@
 <script>
-	import Header from '../lib/header/Header.svelte';
-	import UrlCutter from '../lib/urlCutter/UrlCutter.svelte';
-	import CutTable from '../lib/cutTable/cutTable.svelte';
-	import '../app.css';
+	import Header from '$lib/header/Header.svelte';
+	import UrlCutter from '$lib/urlCutter/UrlCutter.svelte';
+	import CutTable from '$lib/cutTable/cutTable.svelte';
 	import { onMount } from 'svelte';
-
-	let userCuttedURLs = [];
+	import { cuttedURLs } from '$lib/store';
+	import '../app.css';
 
 	onMount(() => {
 		try {
 			const userUrls = JSON.parse(localStorage.getItem('urls'));
-			if (userUrls) {
-				userCuttedURLs = userUrls;
+			if (userUrls && Array.isArray(userUrls)) {
+				cuttedURLs.update(() => userUrls);
 			}
 		} catch (err) {
 			console.log(err);
 		}
 	});
-
-	const handleCuttedURL = (evt) => {
-		userCuttedURLs = [evt.detail.url, ...userCuttedURLs];
-		localStorage.setItem('urls', JSON.stringify(userCuttedURLs));
-	};
 </script>
 
 <svelte:head>
@@ -33,5 +27,5 @@
 </svelte:head>
 
 <Header />
-<UrlCutter on:newCuttedURL={handleCuttedURL} />
-<CutTable {userCuttedURLs} />
+<UrlCutter />
+<CutTable />

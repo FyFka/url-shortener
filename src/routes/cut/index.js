@@ -7,7 +7,6 @@ const saveLinkToDB = async (link) => {
 		date: Timestamp.fromDate(new Date()),
 		clicks: 0
 	});
-	console.log(result);
 	return result;
 };
 
@@ -15,7 +14,8 @@ export const POST = async ({ request }) => {
 	try {
 		const data = await request.json();
 		if (data.link) {
-			return { status: 200, body: { id: saveLinkToDB(data.link) } };
+			const saveResult = await saveLinkToDB(data.link);
+			return { status: 200, body: { id: saveResult.id } };
 		} else {
 			return { status: 400, body: { info: 'Incorrect body' } };
 		}

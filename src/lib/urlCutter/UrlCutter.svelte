@@ -1,9 +1,7 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-
+	import { cuttedURLs } from '$lib/store';
 	let url = '';
 	let isURLValid = '';
-	const dispatch = createEventDispatcher();
 
 	const validateURLReg = new RegExp(
 		'((?:(?:http?|ftp)[s]*://)?[a-z0-9-%/&=?.]+.[a-z]{2,4}/?([^s<>#%",{}\\|\\^[]`]+)?)',
@@ -11,8 +9,14 @@
 	);
 
 	const handleNewUrlSubmit = () => {
-		dispatch('newCuttedURL', {
-			url: url
+		fetch(`/cut`, {
+			method: 'POST',
+			body: JSON.stringify({ link: url })
+		});
+		cuttedURLs.update((prevURLs) => {
+			const newURLs = [url, ...prevURLs];
+			localStorage.setItem('urls', JSON.stringify(newURLs));
+			return newURLs;
 		});
 	};
 
