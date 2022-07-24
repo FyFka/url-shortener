@@ -49,64 +49,66 @@
 	</div>
 </section>
 
-<style>
-	.url-cutter__container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		gap: 1.5rem;
-		padding: 4rem 2rem;
-		max-width: 1280px;
-		margin: 0 auto;
-	}
+<style lang="scss">
+	.url-cutter {
+		&__container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			gap: 1.5rem;
+			padding: 4rem 2rem;
+			max-width: 1280px;
+			margin: 0 auto;
+		}
 
-	.url-cutter__about {
-		font-size: 1.25rem;
-		margin: 0;
-		text-align: justify;
-		color: rgb(148, 163, 186);
-	}
+		&__about {
+			font-size: 1.25rem;
+			margin: 0;
+			text-align: justify;
+			color: rgb(148, 163, 186);
+		}
 
-	.url-cutter__user-form {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
-		width: 100%;
-	}
+		&__user-form {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1rem;
+			width: 100%;
+		}
 
-	.url-cutter__highlight {
-		color: var(--accent-color);
-		font-weight: bold;
-	}
+		&__highlight {
+			color: var(--accent-color);
+			font-weight: bold;
+		}
 
-	.url-cutter__inp {
-		width: 100%;
-		padding: 0.5rem;
-		border: none;
-		border-radius: 0.25rem;
-		font-size: 1.15rem;
-	}
+		&__inp {
+			width: 100%;
+			padding: 0.5rem;
+			border: none;
+			border-radius: 0.25rem;
+			font-size: 1.15rem;
+		}
 
-	.url-cutter__inp[data-valid='false']:not(focus) {
-		outline: 2px solid rgb(255, 0, 0);
-		outline-offset: 1px;
-	}
+		&__inp[data-valid='false']:not(focus) {
+			outline: 2px solid rgb(255, 0, 0);
+			outline-offset: 1px;
+		}
 
-	.url-cutter__btn {
-		cursor: pointer;
-		min-width: 9rem;
-		padding: 0.75rem 1.25rem;
-		font-weight: 600;
-		color: var(--accent-color);
-		background-color: rgb(14, 165, 235);
-		border: none;
-		transition: transform 0.1s ease-in-out;
-		border-radius: 0.25rem;
-	}
+		&__btn {
+			cursor: pointer;
+			min-width: 9rem;
+			padding: 0.75rem 1.25rem;
+			font-weight: 600;
+			color: var(--accent-color);
+			background-color: rgb(14, 165, 235);
+			border: none;
+			transition: transform 0.1s ease-in-out;
+			border-radius: 0.25rem;
+		}
 
-	.url-cutter__btn:hover {
-		transform: scale(1.05);
+		&__btn:hover {
+			transform: scale(1.05);
+		}
 	}
 </style>

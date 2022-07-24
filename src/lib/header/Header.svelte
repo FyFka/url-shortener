@@ -12,7 +12,7 @@
 	</a>
 </header>
 
-<style>
+<style lang="scss">
 	.header {
 		position: sticky;
 		top: 0;
@@ -25,15 +25,17 @@
 		background-color: rgb(15 23 42/0.75);
 		border-bottom: 1px solid rgba(248, 250, 252, 0.06);
 		backdrop-filter: blur(10px);
-	}
-	.header__container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-	}
-	.header__app-name {
-		font-size: 1.5rem;
-		margin: 0;
+
+		&__container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.75rem;
+		}
+
+		&__app-name {
+			font-size: 1.5rem;
+			margin: 0;
+		}
 	}
 </style>
