@@ -49,7 +49,7 @@
 		gap: 1rem;
 	}
 	.cut {
-		background-color: var(--secondary-color);
+		background-color: var(--neutral-color);
 		border: 1px solid rgba(32, 32, 32, 0.45);
 		padding: 1rem;
 		border-radius: 0.5rem;

@@ -143,11 +143,11 @@
 			border: none;
 			border-radius: 0.25rem;
 			font-size: 1.25rem;
-			background-color: #f0eef9;
+			background-color: rgb(240, 238, 249);
 			color: rgb(9, 8, 52);
 
 			&::placeholder {
-				color: #d0cce5;
+				color: rgb(208, 204, 229);
 			}
 		}
 
@@ -162,8 +162,8 @@
 			width: 9rem;
 			padding: 0.75rem 1.25rem;
 			font-weight: 600;
-			color: var(--secondary-color);
-			background: linear-gradient(to right, #938dec, #716add);
+			color: var(--neutral-color);
+			background: linear-gradient(to right, rgb(147, 141, 236), rgb(113, 106, 221));
 			border: none;
 			transition: all 0.1s ease-in-out;
 			border-radius: 0.25rem;
