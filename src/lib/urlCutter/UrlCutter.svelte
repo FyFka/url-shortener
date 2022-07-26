@@ -38,19 +38,33 @@
 			appear at the bottom.
 		</p>
 		<form class="url-cutter__user-form" on:submit|preventDefault={handleNewUrlSubmit}>
+			<label class="url-cutter__link" for="cutter-url" />
 			<input
 				data-valid={isURLValid}
 				class="url-cutter__inp"
 				placeholder="Enter the link here"
+				name="cutter-url"
+				type="text"
+				id="cutter-url"
 				bind:value={url}
 			/>
 			<button type="submit" class="url-cutter__btn">Cut it</button>
 		</form>
+		<h5 class="url-cutter__info">Use it, its FREE FOREVER... Fast - Secure - Long Term Link</h5>
 	</div>
 </section>
 
 <style lang="scss">
 	.url-cutter {
+		&__link {
+			position: absolute;
+			left: 4.5rem;
+			height: 1.25rem;
+			width: 1.25rem;
+			background: url('/assets/link.svg') no-repeat center center;
+			background-size: contain;
+			z-index: 799;
+		}
 		&__container {
 			display: flex;
 			align-items: center;
@@ -66,28 +80,40 @@
 			font-size: 1.25rem;
 			margin: 0;
 			text-align: justify;
-			color: rgb(148, 163, 186);
+			color: var(--secondary-accent-color);
+			font-weight: 500;
+			line-height: 1.5;
 		}
 
 		&__user-form {
+			position: relative;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			gap: 1rem;
 			width: 100%;
+			padding: 3.5rem;
+			box-shadow: 0 2.875rem 3.125rem 0.15rem rgb(59 52 154 / 15%);
+			border-radius: 0.5rem;
 		}
 
 		&__highlight {
 			color: var(--accent-color);
-			font-weight: bold;
+			font-weight: 700;
 		}
 
 		&__inp {
 			width: 100%;
-			padding: 0.5rem;
+			padding: 1rem 10rem 1rem 3rem;
 			border: none;
 			border-radius: 0.25rem;
-			font-size: 1.15rem;
+			font-size: 1.25rem;
+			background-color: #f0eef9;
+			color: rgb(9, 8, 52);
+
+			&::placeholder {
+				color: #d0cce5;
+			}
 		}
 
 		&__inp[data-valid='false']:not(focus) {
@@ -96,19 +122,23 @@
 		}
 
 		&__btn {
+			position: absolute;
 			cursor: pointer;
-			min-width: 9rem;
+			width: 9rem;
 			padding: 0.75rem 1.25rem;
 			font-weight: 600;
-			color: var(--accent-color);
-			background-color: rgb(14, 165, 235);
+			color: var(--secondary-color);
+			background: linear-gradient(to right, #938dec, #716add);
 			border: none;
-			transition: transform 0.1s ease-in-out;
+			transition: all 0.1s ease-in-out;
 			border-radius: 0.25rem;
+			right: 4rem;
 		}
 
-		&__btn:hover {
-			transform: scale(1.05);
+		&__info {
+			margin: 0;
+			color: rgb(155, 155, 155);
+			text-align: center;
 		}
 	}
 </style>

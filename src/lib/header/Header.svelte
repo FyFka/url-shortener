@@ -22,20 +22,23 @@
 		justify-content: center;
 		align-items: center;
 		padding: 1rem 0.5rem;
-		background-color: rgb(15 23 42/0.75);
-		border-bottom: 1px solid rgba(248, 250, 252, 0.06);
+		background-color: rgba(248, 248, 248, 0.55);
+		border-bottom: 1px solid rgba(32, 32, 32, 0.45);
 		backdrop-filter: blur(10px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 5%);
 
 		&__container {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			gap: 0.75rem;
+			border-radius: 0.25rem;
 		}
 
 		&__app-name {
 			font-size: 1.5rem;
 			margin: 0;
+			color: rgb(9, 8, 52);
 		}
 	}
 </style>
