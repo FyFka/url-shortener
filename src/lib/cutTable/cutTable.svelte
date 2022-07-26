@@ -23,7 +23,7 @@
 <section class="cut-container">
 	{#each $cuttedURLs as cuttedURL}
 		<div class="cut">
-			<h4 class="cut__raw-url">{cuttedURL}</h4>
+			<h4 class="cut__raw-url">{cuttedURL.url}</h4>
 			<input
 				class="cut__cut-url"
 				on:mousedown|preventDefault
@@ -32,7 +32,7 @@
 				on:input|preventDefault={(e) => {
 					e.target.value = cuttedURL;
 				}}
-				value={cuttedURL}
+				value={cuttedURL.shortUrl}
 				readonly
 			/>
 		</div>

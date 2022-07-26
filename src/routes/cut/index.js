@@ -10,10 +10,23 @@ const saveLinkToDB = async (link) => {
 	return result;
 };
 
+const findLinkInDB = async (link) => {
+	const linksRef = db.collection('links');
+	const existingLinks = await linksRef.where('link', '==', link).limit(1).get();
+	if (!existingLinks.empty) {
+		return existingLinks.docs[0].id;
+	}
+	return null;
+};
+
 export const POST = async ({ request }) => {
 	try {
 		const data = await request.json();
-		if (data.link) {
+		if (data.link && data.link.length > 0) {
+			const foundLink = await findLinkInDB(data.link);
+			if (foundLink) {
+				return { status: 200, body: { id: foundLink } };
+			}
 			const saveResult = await saveLinkToDB(data.link);
 			return { status: 200, body: { id: saveResult.id } };
 		} else {

@@ -1,27 +1,59 @@
 <script>
 	import { cuttedURLs } from '$lib/store';
+	import { toast } from '@zerodevx/svelte-toast';
+	import { page } from '$app/stores';
+
 	let url = '';
 	let isURLValid = '';
+	let isFetching = false;
 
 	const validateURLReg = new RegExp(
-		'((?:(?:http?|ftp)[s]*://)?[a-z0-9-%/&=?.]+.[a-z]{2,4}/?([^s<>#%",{}\\|\\^[]`]+)?)',
+		/((?:(?:http?|ftp)[s]*:\/\/)?[a-z0-9-%\/\&=?\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?)/,
 		'gi'
 	);
 
-	const handleNewUrlSubmit = () => {
-		fetch(`/cut`, {
-			method: 'POST',
-			body: JSON.stringify({ link: url })
-		});
-		cuttedURLs.update((prevURLs) => {
-			const newURLs = [url, ...prevURLs];
-			localStorage.setItem('urls', JSON.stringify(newURLs));
-			return newURLs;
-		});
+	const handleNewUrlSubmit = async () => {
+		if (url.length === 0 || !isURLValid) {
+			toast.push("Invalid link or we don't currently support this URL", {
+				theme: { '--toastBackground': '#F56565', '--toastBarBackground': '#C53030' }
+			});
+			return;
+		}
+		isFetching = true;
+		try {
+			const cutUrlRequest = await fetch(`/cut`, {
+				method: 'POST',
+				body: JSON.stringify({ link: url })
+			});
+			const cuttedUrl = await cutUrlRequest.json();
+			if (cuttedUrl && cuttedUrl.id) {
+				cuttedURLs.update((prevURLs) => {
+					const newURL = {
+						id: cuttedUrl.id,
+						url: url,
+						shortUrl: `${$page.url.origin}/cut/${cuttedUrl.id}`
+					};
+					const newURLs = [newURL, ...prevURLs];
+					localStorage.setItem('urls', JSON.stringify(newURLs));
+					return newURLs;
+				});
+				url = '';
+				toast.push('Your link has been successfully shortened!!', {
+					theme: { '--toastBackground': '#48BB78', '--toastBarBackground': '#2F855A' }
+				});
+			} else {
+				toast.push('An error occurred while shortening your link!', {
+					theme: { '--toastBackground': '#F56565', '--toastBarBackground': '#C53030' }
+				});
+			}
+			isFetching = false;
+		} catch (err) {
+			isFetching = false;
+		}
 	};
 
 	$: {
-		if (validateURLReg.test(url) || url.trim().length === 0) {
+		if (validateURLReg.test(url) || url.length === 0) {
 			isURLValid = true;
 		} else {
 			isURLValid = false;
@@ -46,9 +78,12 @@
 				name="cutter-url"
 				type="text"
 				id="cutter-url"
+				title={isURLValid ? undefined : 'Invalid URL'}
 				bind:value={url}
 			/>
-			<button type="submit" class="url-cutter__btn">Cut it</button>
+			<button type="submit" class="url-cutter__btn" disabled={isFetching}
+				>{isFetching ? 'Cutting...' : 'Cut it!'}</button
+			>
 		</form>
 		<h5 class="url-cutter__info">Use it, its FREE FOREVER... Fast - Secure - Long Term Link</h5>
 	</div>
@@ -133,6 +168,10 @@
 			transition: all 0.1s ease-in-out;
 			border-radius: 0.25rem;
 			right: 4rem;
+
+			&:disabled {
+				opacity: 0.5;
+			}
 		}
 
 		&__info {
