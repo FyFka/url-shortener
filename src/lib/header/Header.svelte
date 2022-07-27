@@ -1,13 +1,62 @@
 <header class="header">
 	<a href="/" class="header__container">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57 50" width="45" height="40">
-			<path fill="#4e85c5" d="M28.078.938 56.125 49.5H.031z" />
-			<path
-				fill="#fff"
-				d="M27 19c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zM40.421 38.842a3.579 3.579 0 1 1 0 7.158 3.579 3.579 0 0 1 0-7.158z"
-			/>
-		</svg>
-
+		<svg xmlns="http://www.w3.org/2000/svg" width="48" height="44" viewBox="0 0 484 448"
+			><g opacity=".8"
+				><g opacity=".8"
+					><path fill="#6366f1" d="M175.778 10.028 473.58 89.821 255.57 307.83z" /><path
+						fill="none"
+						stroke="#000"
+						stroke-miterlimit="20"
+						d="M175.778 10.028 473.58 89.821 255.57 307.83z"
+					/></g
+				><g opacity=".8"
+					><path fill="#6366f1" d="M375.222 55.028 295.429 352.83 77.42 134.82z" /><path
+						fill="none"
+						stroke="#000"
+						stroke-miterlimit="20"
+						d="M375.222 55.028 295.429 352.83 77.42 134.82z"
+					/></g
+				><g opacity=".8"
+					><path fill="#6366f1" d="m292.575 89.537.004 308.307L25.572 243.687z" /><path
+						fill="none"
+						stroke="#000"
+						stroke-miterlimit="20"
+						d="m292.575 89.537.004 308.307L25.572 243.687z"
+					/></g
+				><g opacity=".8"
+					><path fill="#6366f1" d="m228.12 140.173 79.8 297.8-297.807-79.796z" /><path
+						fill="none"
+						stroke="#000"
+						stroke-miterlimit="20"
+						d="m228.12 140.173 79.8 297.8-297.807-79.796z"
+					/></g
+				></g
+			><path fill="#6366f1" d="M308.222 10.028 228.429 307.83 10.42 89.82z" /><path
+				fill="none"
+				stroke="#000"
+				stroke-miterlimit="20"
+				d="M308.222 10.028 228.429 307.83 10.42 89.82z"
+			/><path fill="#6366f1" d="m108.778 55.028 297.802 79.793-218.01 218.01z" /><path
+				fill="none"
+				stroke="#000"
+				stroke-miterlimit="20"
+				d="m108.778 55.028 297.802 79.793L188.57 352.83z"
+			/><g
+				><path fill="#6366f1" d="m191.425 89.537 267.003 154.15L191.42 397.844z" /><path
+					fill="none"
+					stroke="#000"
+					stroke-miterlimit="20"
+					d="m191.425 89.537 267.003 154.15L191.42 397.844z"
+				/></g
+			><g
+				><path fill="#6366f1" d="m255.88 140.173 218.007 218.004-297.807 79.797z" /><path
+					fill="none"
+					stroke="#000"
+					stroke-miterlimit="20"
+					d="m255.88 140.173 218.007 218.004-297.807 79.797z"
+				/></g
+			></svg
+		>
 		<h1 class="header__app-name">URL Shortener</h1>
 	</a>
 </header>
