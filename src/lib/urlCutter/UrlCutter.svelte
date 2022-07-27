@@ -5,7 +5,7 @@
 
 	let url = '';
 	let isFetching = false;
-	$: isURLValid = validateURLReg.test(url);
+	$: isURLValid = validateURLReg.test(url) || url.length == 0 ? true : false;
 
 	const validateURLReg = /^(https?|chrome|ftp):\/\/[^\s$.?#].[^\s]*$/;
 
