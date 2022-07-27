@@ -70,17 +70,17 @@
 			appear at the bottom.
 		</p>
 		<form class="url-cutter__user-form" on:submit|preventDefault={handleNewUrlSubmit}>
-			<label class="url-cutter__link" for="cutter-url" />
-			<input
-				data-valid={isURLValid}
-				class="url-cutter__inp"
-				placeholder="Enter the link here"
-				name="cutter-url"
-				type="text"
-				id="cutter-url"
-				title={isURLValid ? undefined : 'Invalid URL'}
-				bind:value={url}
-			/>
+			<label class="url-cutter__label">
+				<input
+					data-valid={isURLValid}
+					class="url-cutter__inp"
+					placeholder="Enter the link here"
+					name="cutter-url"
+					type="text"
+					title={isURLValid ? undefined : 'Invalid URL'}
+					bind:value={url}
+				/>
+			</label>
 			<button type="submit" class="url-cutter__btn" disabled={isFetching}
 				>{isFetching ? 'Cutting...' : 'Cut it!'}</button
 			>
@@ -91,14 +91,22 @@
 
 <style lang="scss">
 	.url-cutter {
-		&__link {
-			position: absolute;
-			left: 4.5rem;
-			height: 1.25rem;
-			width: 1.25rem;
-			background: url('/assets/link.svg') no-repeat center center;
-			background-size: contain;
-			z-index: 799;
+		&__label {
+			width: 100%;
+			position: relative;
+			&::before {
+				content: '';
+				position: absolute;
+				left: 1rem;
+				top: 50%;
+				transform: translate(0, -50%);
+				height: 1.25rem;
+				width: 1.25rem;
+				background: url('/assets/link.svg') no-repeat center center;
+				background-size: contain;
+				z-index: 299;
+				user-select: none;
+			}
 		}
 		&__container {
 			display: flex;
@@ -178,6 +186,23 @@
 			margin: 0;
 			color: rgb(155, 155, 155);
 			text-align: center;
+		}
+	}
+
+	@media (max-width: 578px) {
+		.url-cutter {
+			&__user-form {
+				flex-direction: column;
+			}
+
+			&__inp {
+				padding: 1rem 1rem 1rem 3rem;
+			}
+
+			&__btn {
+				position: initial;
+				width: 100%;
+			}
 		}
 	}
 </style>
