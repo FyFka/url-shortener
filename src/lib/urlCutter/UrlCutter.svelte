@@ -4,13 +4,10 @@
 	import { page } from '$app/stores';
 
 	let url = '';
-	let isURLValid = '';
 	let isFetching = false;
+	$: isURLValid = validateURLReg.test(url);
 
-	const validateURLReg = new RegExp(
-		/((?:(?:http?|ftp)[s]*:\/\/)?[a-z0-9-%\/\&=?\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?)/,
-		'gi'
-	);
+	const validateURLReg = /^(https?|chrome|ftp):\/\/[^\s$.?#].[^\s]*$/;
 
 	const handleNewUrlSubmit = async () => {
 		if (url.length === 0 || !isURLValid) {
@@ -51,14 +48,6 @@
 			isFetching = false;
 		}
 	};
-
-	$: {
-		if (validateURLReg.test(url) || url.length === 0) {
-			isURLValid = true;
-		} else {
-			isURLValid = false;
-		}
-	}
 </script>
 
 <section class="url-cutter">
