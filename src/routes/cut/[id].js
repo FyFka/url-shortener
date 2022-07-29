@@ -1,11 +1,12 @@
 import { db } from '$lib/database';
+import { FieldValue } from '@google-cloud/firestore';
 
 export const GET = async ({ params }) => {
 	const linksRef = db.collection('links').doc(params.id);
 	const doc = await linksRef.get();
 
 	if (doc.exists) {
-		linksRef.update({ clicks: doc.data().clicks + 1 });
+		linksRef.update({ clicks: FieldValue.increment(1) });
 	}
 
 	return {

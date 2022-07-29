@@ -21,9 +21,9 @@
 </script>
 
 <section class="cut-container">
-	{#each $cuttedURLs as cuttedURL}
+	{#each $cuttedURLs as cuttedURL, idx}
 		<div class="cut">
-			<h4 class="cut__raw-url">{cuttedURL.url}</h4>
+			<label class="cut__raw-url" for={`${cuttedURL.shortUrl}-${idx}`}>{cuttedURL.url}</label>
 			<input
 				class="cut__cut-url"
 				on:mousedown|preventDefault
@@ -33,6 +33,7 @@
 					e.target.value = cuttedURL;
 				}}
 				value={cuttedURL.shortUrl}
+				id={`${cuttedURL.shortUrl}-${idx}`}
 				readonly
 			/>
 		</div>
@@ -53,12 +54,12 @@
 		border: 1px solid rgba(32, 32, 32, 0.45);
 		padding: 1rem;
 		border-radius: 0.5rem;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 10%);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 15%);
 
 		&__raw-url {
 			font-size: 0.75rem;
 			margin: 0 0 0.5rem 0;
-			color: rgb(148, 163, 186);
+			color: rgb(94 112 141);
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;

@@ -74,7 +74,7 @@
 				>{isFetching ? 'Cutting...' : 'Cut it!'}</button
 			>
 		</form>
-		<h5 class="url-cutter__info">Use it, its FREE FOREVER... Fast - Secure - Long Term Link</h5>
+		<h2 class="url-cutter__info">Use it, its FREE FOREVER... Fast - Secure - Long Term Link</h2>
 	</div>
 </section>
 
@@ -172,6 +172,7 @@
 		}
 
 		&__info {
+			font-size: 0.83em;
 			margin: 0;
 			color: rgb(155, 155, 155);
 			text-align: center;
