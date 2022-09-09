@@ -57,6 +57,7 @@
 		box-shadow: 0 3px 10px rgba(0, 0, 0, 15%);
 
 		&__raw-url {
+			display: block;
 			font-size: 0.75rem;
 			margin: 0 0 0.5rem 0;
 			color: rgb(94 112 141);

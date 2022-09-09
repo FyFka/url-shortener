@@ -18,7 +18,7 @@
 		}
 		isFetching = true;
 		try {
-			const cutUrlRequest = await fetch(`/cut`, {
+			const cutUrlRequest = await fetch(`/c`, {
 				method: 'POST',
 				body: JSON.stringify({ link: url })
 			});
@@ -28,7 +28,7 @@
 					const newURL = {
 						id: cuttedUrl.id,
 						url: url,
-						shortUrl: `${$page.url.origin}/cut/${cuttedUrl.id}`
+						shortUrl: `${$page.url.origin}/c/${cuttedUrl.id}`
 					};
 					const newURLs = [newURL, ...prevURLs];
 					localStorage.setItem('urls', JSON.stringify(newURLs));
@@ -183,6 +183,7 @@
 		.url-cutter {
 			&__user-form {
 				flex-direction: column;
+				padding: 1.5rem;
 			}
 
 			&__inp {
